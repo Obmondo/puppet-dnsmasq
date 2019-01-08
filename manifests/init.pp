@@ -8,9 +8,9 @@ class dnsmasq(
 ) {
   include ::dnsmasq::params
 
-  validate_hash($configs_hash)
-  validate_hash($hosts_hash)
-  validate_hash($dhcp_hosts_hash)
+  validate_legacy(Hash, 'validate_hash', $configs_hash)
+  validate_legacy(Hash, 'validate_hash', $hosts_hash)
+  validate_legacy(Hash, 'validate_hash', $dhcp_hosts_hash)
 
   anchor { '::dnsmasq::start': }
 
